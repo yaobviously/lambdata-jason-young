@@ -13,4 +13,9 @@ def train_test_split(df, frac = 0.2):
 def randomize(df, seed = 50):
     return df.sample(frac = 1, replace = False, random_seed = seed)
 
+def list_2_series(listtoseries, df):
+    df['list'] = pd.Series(listtoseries)
+    return df
+
+
 
