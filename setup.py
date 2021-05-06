@@ -1,9 +1,9 @@
 from distutils.core import setup
 
 setup(
-  name = 'lambdata-jason-young',         # How you named your package folder (MyLib)
-  packages = ['lambdata-jason-young'],   # Chose the same as "name"
-  version = '0.3',      # Start with a small number and increase it with every change you make
+  name = 'lambdatajasony',         # How you named your package folder (MyLib)
+  packages = ['lambdatajasony'],   # Chose the same as "name"
+  version = '0.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Helper functions for a project',   # Give a short description about your library
   author = 'Jason Young',                   # Type in your name
