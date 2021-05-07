@@ -12,7 +12,7 @@ class NullCount(pd.DataFrame):
     """
     
     A subclass of Pandas DataFrames with a new method attached that returns
-    the sum of nulls in all of the cells
+    the sum of all nulls
     
     """
     def nulls(self, df):
@@ -37,22 +37,22 @@ class RandomizedDataFrame(pd.DataFrame):
 
 
 class HungryDataFrame:
-    """
-    An object that takes both a DataFrame and a list with a method to 
-    combine them. Useless!
-    """
-
-  def __init__(self, listy, df):
-    self.listy = listy
-    self.df = df
+    
+    def __init__(self, listy, df):
+        self.listy = listy
+        self.df = df
 
   
-  def mutate(self):
-    self.df['list'] = pd.Series(self.listy)
+    def mutate(self):
+        self.df['list'] = pd.Series(self.listy)
 
-    return self.df
+        return self.df
 
-
+class FriendlyError(Exception):
+    
+    """ A friendlier error message"""
+    
+    pass
 
 def train_test_split(df, frac = 0.2):
     """
@@ -73,10 +73,14 @@ def train_test_split(df, frac = 0.2):
     test : A Pandas DataFrame with frac of the data
 
     """
-    train = df.sample(frac = 1 - frac, replace = False, random_state = 60)
-    test = df.drop(train.index)
+    if isinstance(df, pd.DataFrame):
+        
+        train = df.sample(frac = 1 - frac, replace = False, random_state = 60)
+        test = df.drop(train.index)
+        
+        return train, test
     
-    return train, test
-
-
+    else:
+        
+        raise FriendlyError("Sorry. It is my fault, not yours")
 
